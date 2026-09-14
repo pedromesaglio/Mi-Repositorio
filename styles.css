@@ -489,13 +489,17 @@ section {
 
 .about-meta,
 .detail-meta {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: 0.5rem;
     font-family: var(--font-mono);
     font-size: 0.85rem;
     color: var(--text-muted);
     margin-bottom: 1.75rem;
+}
+
+.about-meta {
+    justify-content: center;
 }
 
 .about-meta i,
