@@ -18,9 +18,7 @@ const GRAPH_NODES = [
                 'Trabajo principalmente con Python (FastAPI, Flask), APIs REST, JWT/RBAC, PostgreSQL y AWS. Del lado de IA aplicada: aplicaciones LLM, RAG / búsqueda vectorial, LangGraph e integraciones MCP para automatizar workflows y mejorar la atención al usuario.',
                 'Actualmente cursando la Licenciatura en Inteligencia Artificial y Robótica en la Universidad Empresarial Siglo 21, aplicando lo teórico en proyectos reales.'
             ],
-            facts: [
-                { label: 'Ubicación', value: 'Buenos Aires, Argentina' }
-            ]
+            location: 'Buenos Aires, Argentina'
         }
     },
     {
@@ -422,15 +420,8 @@ function renderAboutContent(node) {
     const d = node.detail;
     return `
         <p class="detail-role">${escapeHtml(d.role)}</p>
+        <p class="detail-meta"><i class="fas fa-location-dot"></i> ${escapeHtml(d.location)}</p>
         ${d.paragraphs.map(p => `<p class="detail-paragraph">${escapeHtml(p)}</p>`).join('')}
-        <div class="detail-facts">
-            ${d.facts.map(f => `
-                <div class="fact">
-                    <span class="fact-label">${escapeHtml(f.label)}</span>
-                    <span class="fact-value">${escapeHtml(f.value)}</span>
-                </div>
-            `).join('')}
-        </div>
     `;
 }
 

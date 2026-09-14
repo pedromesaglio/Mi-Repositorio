@@ -16,18 +16,11 @@ function buildListView() {
         <section id="about" class="about">
             <div class="container">
                 <h2 class="section-title"><span class="section-number">01</span> Sobre mí</h2>
-                <div class="about-grid">
-                    <div class="about-text fade-in">
+                <div class="about-content fade-in">
+                    <p class="about-meta"><i class="fas fa-location-dot"></i> ${escapeHtml(pedro.detail.location)}</p>
+                    <div class="about-text">
                         ${pedro.detail.paragraphs.map(p => `<p>${escapeHtml(p)}</p>`).join('')}
                     </div>
-                    <aside class="about-facts fade-in">
-                        ${pedro.detail.facts.map(f => `
-                            <div class="fact">
-                                <span class="fact-label">${escapeHtml(f.label)}</span>
-                                <span class="fact-value">${escapeHtml(f.value)}</span>
-                            </div>
-                        `).join('')}
-                    </aside>
                 </div>
             </div>
         </section>
