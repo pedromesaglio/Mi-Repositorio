@@ -64,7 +64,7 @@ function applyTranslations() {
     document.querySelectorAll('[data-i18n]').forEach(el => {
         el.textContent = t(el.dataset.i18n);
     });
-    document.getElementById('lang-toggle').textContent = t('langSwitchTo');
+    document.querySelector('.lang-toggle-label').textContent = t('langSwitchTo');
     document.documentElement.lang = CURRENT_LANG;
 }
 
