@@ -3,226 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pedro Mesaglio - AI Engineer & Full Stack Developer</title>
+    <title>Pedro Mesaglio — AI Engineer & Full-Stack Developer</title>
+    <meta name="description" content="Pedro Mesaglio — AI Engineer y desarrollador Full-Stack. Python, FastAPI/Flask, LangGraph, RAG, Next.js.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <h2>Pedro Mesaglio</h2>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Inicio</a></li>
-                <li><a href="#about" class="nav-link">Sobre Mí</a></li>
-                <li><a href="#skills" class="nav-link">Habilidades</a></li>
-                <li><a href="#projects" class="nav-link">Proyectos</a></li>
-                <li><a href="#contact" class="nav-link">Contacto</a></li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
+<body data-mode="graph">
+    <div class="bg-grid" aria-hidden="true"></div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <canvas id="particles-canvas"></canvas>
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Hola, soy <span class="highlight">Pedro Mesaglio</span></h1>
-                <p class="hero-subtitle">AI Engineer & Full Stack Product Engineer | Construyendo productos end-to-end con IA aplicada</p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">Ver Proyectos</a>
-                    <a href="#contact" class="btn btn-secondary">Contactar</a>
+    <!-- Header -->
+    <header class="app-header">
+        <div class="container header-inner">
+            <a href="#" class="nav-brand" onclick="return false;">Pedro<span>.</span>Mesaglio</a>
+
+            <nav id="list-nav" class="list-nav" hidden>
+                <a href="#about" class="list-nav-link">Sobre mí</a>
+                <a href="#experience" class="list-nav-link">Experiencia</a>
+                <a href="#projects" class="list-nav-link">Proyectos</a>
+                <a href="#skills" class="list-nav-link">Skills</a>
+                <a href="#contact" class="list-nav-link">Contacto</a>
+            </nav>
+
+            <div class="header-actions">
+                <button id="mode-toggle" class="mode-toggle-btn" type="button">Ver como lista</button>
+                <a href="assets/CV_Pedro_Mesaglio.pdf" download class="nav-cv-btn">
+                    <i class="fas fa-arrow-down"></i><span class="cv-btn-label">Descargar CV</span>
+                </a>
+                <div class="header-icons">
+                    <a href="mailto:pedromesaglio05@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/pedromesaglio" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/pedro-mesaglio-49946a307/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
+    </header>
+
+    <!-- Graph View -->
+    <section id="graph-view" class="graph-view">
+        <p class="graph-hint">$ explorá el grafo — arrastrá los nodos, pasá el mouse para ver conexiones, hacé click para ver el detalle</p>
+        <div id="graph-canvas" class="graph-canvas"></div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">Sobre Mí</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Soy Ingeniero en IA y Full Stack Product Engineer con experiencia construyendo productos end-to-end (0→1): desde la definición funcional, arquitectura, desarrollo, integración con servicios externos hasta el despliegue en cloud.</p>
-                    <p>Fuerte en Python (Flask), APIs REST, JWT/RBAC, AWS (EC2, Nginx, SSL) y automatización con chatbots (WhatsApp Cloud API). Con interés y práctica en IA aplicada (workflows, asistentes, RAG / búsqueda vectorial con FAISS) para optimizar procesos operativos y atención al usuario.</p>
-                    <p>Actualmente cursando Licenciatura en Inteligencia Artificial y Robótica en Universidad Empresarial Siglo 21, aplicando conocimientos teóricos en proyectos reales.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- List View (built from data.js) -->
+    <main id="list-view" hidden></main>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Habilidades Técnicas</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <i class="fas fa-robot"></i>
-                    <h3>AI Engineering</h3>
-                    <p>Prompting, LLM apps, Automation, RAG / Vector Search (FAISS), Chatbot Design</p>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-server"></i>
-                    <h3>Backend Development</h3>
-                    <p>Python, Flask, REST APIs, JWT, RBAC</p>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-cloud"></i>
-                    <h3>Cloud & DevOps</h3>
-                    <p>AWS (EC2), Nginx, SSL/HTTPS, Linux, Custom Domains</p>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-desktop"></i>
-                    <h3>Frontend</h3>
-                    <p>HTML, CSS, JavaScript, Web Dashboards</p>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-database"></i>
-                    <h3>Bases de Datos</h3>
-                    <p>MySQL, PostgreSQL, SQLite</p>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-comments"></i>
-                    <h3>Chatbots & Automation</h3>
-                    <p>WhatsApp Cloud API, Workflow Automation, AI Assistants</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Detail Panel -->
+    <div id="detail-backdrop" class="detail-backdrop"></div>
+    <aside id="detail-panel" class="detail-panel" role="dialog" aria-modal="true" aria-label="Detalle">
+        <button id="panel-close-btn" class="panel-close-btn" type="button" aria-label="Cerrar">
+            <i class="fas fa-xmark"></i>
+        </button>
+        <div id="detail-panel-body" class="detail-panel-body"></div>
+    </aside>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">Proyectos Destacados</h2>
-            <div class="projects-grid">
-                <!-- Project 1: Edisolutions -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-building fa-3x"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Edisolutions - Plataforma SaaS de Gestión de Consorcios</h3>
-                        <p>Plataforma web completa para administración de consorcios y edificios con chatbot de WhatsApp integrado para consultas automáticas, emergencias y gestión de expensas.</p>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">Flask</span>
-                            <span class="tag">JWT/RBAC</span>
-                            <span class="tag">WhatsApp API</span>
-                            <span class="tag">AWS EC2</span>
-                            <span class="tag">MySQL</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> En producción</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2: CASH-TRACK -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-dollar-sign fa-3x"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>CASH-TRACK</h3>
-                        <p>Aplicación web para seguimiento y gestión financiera desarrollada con Python, HTML y CSS. Sistema completo para el control y análisis de transacciones.</p>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">HTML/CSS</span>
-                            <span class="tag">Web App</span>
-                            <span class="tag">Finance</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/pedromesaglio/CASH-TRACK" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3: RAG System -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-search fa-3x"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Sistema RAG con Búsqueda Vectorial</h3>
-                        <p>Implementación de RAG (Retrieval Augmented Generation) con FAISS para búsqueda semántica y asistencia administrativa inteligente.</p>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">FAISS</span>
-                            <span class="tag">Vector Search</span>
-                            <span class="tag">RAG</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 4: Full Stack Web App -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-globe fa-3x"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Dashboards Interactivos Web</h3>
-                        <p>Desarrollo de interfaces web interactivas con dashboards para gestión de expensas, reservas de amenities, reclamos y comunicaciones internas.</p>
-                        <div class="project-tags">
-                            <span class="tag">HTML/CSS</span>
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">Flask</span>
-                            <span class="tag">REST API</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Contacto</h2>
-            <div class="contact-content">
-                <p class="contact-text">¿Tienes un proyecto en mente? ¡Hablemos!</p>
-                <div class="contact-links">
-                    <a href="mailto:pedromesaglio05@gmail.com" class="contact-link">
-                        <i class="fas fa-envelope"></i>
-                        <span>pedromesaglio05@gmail.com</span>
-                    </a>
-                    <a href="tel:+5491139460342" class="contact-link">
-                        <i class="fas fa-phone"></i>
-                        <span>+54 9 11 3946-0342</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/pedro-mesaglio-49946a307/" class="contact-link" target="_blank">
-                        <i class="fab fa-linkedin"></i>
-                        <span>LinkedIn</span>
-                    </a>
-                    <a href="https://github.com/pedromesaglio" class="contact-link" target="_blank">
-                        <i class="fab fa-github"></i>
-                        <span>GitHub</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Pedro Mesaglio - AI Engineer & Full Stack Developer. Todos los derechos reservados.</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+    <script src="data.js"></script>
+    <script src="graph.js"></script>
+    <script src="list.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
