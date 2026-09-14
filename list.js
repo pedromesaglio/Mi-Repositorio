@@ -7,6 +7,8 @@ function buildListView() {
     const root = document.getElementById('list-view');
     const pedro = GRAPH_NODES.find(n => n.id === 'pedro');
     const edisolutions = GRAPH_NODES.find(n => n.id === 'edisolutions');
+    const educacion = GRAPH_NODES.find(n => n.id === 'educacion');
+    const contacto = GRAPH_NODES.find(n => n.id === 'contacto');
     const projects = GRAPH_NODES.filter(n => n.type === 'project');
     const skills = GRAPH_NODES.filter(n => n.type === 'skill');
 
@@ -65,23 +67,37 @@ function buildListView() {
             </div>
         </section>
 
+        <section id="education" class="about">
+            <div class="container">
+                <h2 class="section-title"><span class="section-number">05</span> Educación</h2>
+                <div class="about-grid">
+                    <div class="about-text fade-in">
+                        <h3>${escapeHtml(educacion.detail.degree)}</h3>
+                        <p>${escapeHtml(educacion.detail.institution)} · ${escapeHtml(educacion.detail.period)}</p>
+                        <p>${escapeHtml(educacion.detail.note)}</p>
+                    </div>
+                    <aside class="about-facts fade-in">
+                        ${educacion.detail.languages.map(l => `
+                            <div class="fact">
+                                <span class="fact-label">${escapeHtml(l.lang)}</span>
+                                <span class="fact-value">${escapeHtml(l.level)}</span>
+                            </div>
+                        `).join('')}
+                    </aside>
+                </div>
+            </div>
+        </section>
+
         <section id="contact" class="contact">
             <div class="container">
-                <h2 class="section-title"><span class="section-number">05</span> Contacto</h2>
-                <p class="contact-text">¿Tenés un proyecto en mente? Hablemos.</p>
+                <h2 class="section-title"><span class="section-number">06</span> Contacto</h2>
+                <p class="contact-text">${escapeHtml(contacto.detail.intro)}</p>
                 <div class="contact-links">
-                    <a href="mailto:pedromesaglio05@gmail.com" class="contact-link fade-in">
-                        <i class="fas fa-envelope"></i><span>pedromesaglio05@gmail.com</span>
-                    </a>
-                    <a href="tel:+5491139460342" class="contact-link fade-in">
-                        <i class="fas fa-phone"></i><span>+54 9 11 3946-0342</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/pedro-mesaglio-49946a307/" class="contact-link fade-in" target="_blank" rel="noopener">
-                        <i class="fab fa-linkedin"></i><span>LinkedIn</span>
-                    </a>
-                    <a href="https://github.com/pedromesaglio" class="contact-link fade-in" target="_blank" rel="noopener">
-                        <i class="fab fa-github"></i><span>GitHub</span>
-                    </a>
+                    ${contacto.detail.channels.map(c => `
+                        <a href="${c.href}" class="contact-link fade-in" ${c.href.startsWith('http') ? 'target="_blank" rel="noopener"' : ''}>
+                            <i class="${c.icon}"></i><span>${escapeHtml(c.label)}</span>
+                        </a>
+                    `).join('')}
                 </div>
             </div>
         </section>

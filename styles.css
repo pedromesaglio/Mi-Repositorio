@@ -435,6 +435,19 @@ section {
     line-height: 1.85;
 }
 
+.about-text h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.detail-contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
 .about-facts,
 .detail-facts {
     display: flex;
@@ -499,7 +512,7 @@ section {
     font-size: 0.95rem;
 }
 
-.experience-company .dot {
+.dot {
     color: var(--accent);
     margin: 0 0.3rem;
 }

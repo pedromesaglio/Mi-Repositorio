@@ -19,9 +19,41 @@ const GRAPH_NODES = [
                 'Actualmente cursando la Licenciatura en Inteligencia Artificial y Robótica en la Universidad Empresarial Siglo 21, aplicando lo teórico en proyectos reales.'
             ],
             facts: [
-                { label: 'Ubicación', value: 'Buenos Aires, Argentina' },
-                { label: 'Educación', value: 'Lic. en IA & Robótica — UES21 (en curso)' },
-                { label: 'Idiomas', value: 'Español (nativo) · Inglés (intermedio) · Portugués (básico)' }
+                { label: 'Ubicación', value: 'Buenos Aires, Argentina' }
+            ]
+        }
+    },
+    {
+        id: 'educacion',
+        type: 'education',
+        label: 'Educación',
+        detail: {
+            kind: 'education',
+            title: 'Educación',
+            institution: 'Universidad Empresarial Siglo 21',
+            degree: 'Licenciatura en Inteligencia Artificial y Robótica',
+            period: 'Marzo 2024 — Presente',
+            note: 'Aplicando lo teórico en proyectos reales (SecretarIA, Edisolutions) mientras cursa la carrera.',
+            languages: [
+                { lang: 'Español', level: 'Nativo' },
+                { lang: 'Inglés', level: 'Intermedio (hablado y escrito)' },
+                { lang: 'Portugués', level: 'Básico' }
+            ]
+        }
+    },
+    {
+        id: 'contacto',
+        type: 'contact',
+        label: 'Contacto',
+        detail: {
+            kind: 'contact',
+            title: 'Contacto',
+            intro: '¿Tenés un proyecto en mente? Hablemos.',
+            channels: [
+                { icon: 'fas fa-envelope', label: 'pedromesaglio05@gmail.com', href: 'mailto:pedromesaglio05@gmail.com' },
+                { icon: 'fas fa-phone', label: '+54 9 11 3946-0342', href: 'tel:+5491139460342' },
+                { icon: 'fab fa-linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/pedro-mesaglio-49946a307/' },
+                { icon: 'fab fa-github', label: 'GitHub', href: 'https://github.com/pedromesaglio' }
             ]
         }
     },
@@ -128,10 +160,101 @@ const GRAPH_NODES = [
             title: 'Data & Integration',
             text: 'PostgreSQL, MySQL, SQLite, Server-Sent Events, Google OAuth, Google Calendar/Meet, WhatsApp Cloud API, Telegram, Git/GitHub'
         }
+    },
+    {
+        id: 'python',
+        type: 'tech',
+        label: 'Python',
+        detail: {
+            kind: 'skill',
+            title: 'Python',
+            text: 'Lenguaje principal del backend — Flask en Edisolutions y FastAPI en SecretarIA, con pytest para testing de integración.'
+        }
+    },
+    {
+        id: 'fastapi-flask',
+        type: 'tech',
+        label: 'FastAPI / Flask',
+        detail: {
+            kind: 'skill',
+            title: 'FastAPI & Flask',
+            text: 'FastAPI como base async de SecretarIA (Pydantic, SQLAlchemy); Flask en las APIs REST de Edisolutions con JWT/RBAC.'
+        }
+    },
+    {
+        id: 'orm-validation',
+        type: 'tech',
+        label: 'SQLAlchemy / Pydantic',
+        detail: {
+            kind: 'skill',
+            title: 'SQLAlchemy & Pydantic',
+            text: 'ORM y validación de datos tipados sobre PostgreSQL; migraciones de esquema versionadas con Alembic.'
+        }
+    },
+    {
+        id: 'auth',
+        type: 'tech',
+        label: 'JWT / RBAC',
+        detail: {
+            kind: 'skill',
+            title: 'JWT & RBAC',
+            text: 'Autenticación por tokens y control de acceso por roles con aislamiento de datos por tenant, en producción en Edisolutions.'
+        }
+    },
+    {
+        id: 'ts-js',
+        type: 'tech',
+        label: 'TypeScript / JS',
+        detail: {
+            kind: 'skill',
+            title: 'TypeScript & JavaScript',
+            text: 'Tipado end-to-end en el frontend de SecretarIA y Mueble Libre, del componente a la llamada a la API.'
+        }
+    },
+    {
+        id: 'nextjs-react',
+        type: 'tech',
+        label: 'Next.js / React',
+        detail: {
+            kind: 'skill',
+            title: 'Next.js & React',
+            text: 'Frontend de SecretarIA y Mueble Libre, con TanStack Query para estado de servidor y actualizaciones en tiempo real vía SSE.'
+        }
+    },
+    {
+        id: 'tailwind',
+        type: 'tech',
+        label: 'Tailwind CSS',
+        detail: {
+            kind: 'skill',
+            title: 'Tailwind CSS',
+            text: 'Sistema de estilos utilitario del dashboard de SecretarIA — diseño consistente sin CSS a medida por componente.'
+        }
+    },
+    {
+        id: 'llm-apps',
+        type: 'tech',
+        label: 'LLM Apps',
+        detail: {
+            kind: 'skill',
+            title: 'LLM Apps',
+            text: 'Integración de Anthropic y OpenAI con ruteo de modelos, evaluación y benchmarking; prompting y diseño de chatbots, con autorización y reglas de negocio fuera del límite del LLM.'
+        }
+    },
+    {
+        id: 'rag',
+        type: 'tech',
+        label: 'RAG',
+        detail: {
+            kind: 'skill',
+            title: 'RAG (Retrieval-Augmented Generation)',
+            text: 'Búsqueda vectorial (FAISS) y workflows de retrieval-first help/knowledge, con embeddings e indexing asíncronos en SecretarIA.'
+        }
     }
 ];
 
 const GRAPH_EDGES = [
+    // Hub — Pedro to each top-level area
     ['pedro', 'edisolutions'],
     ['pedro', 'secretaria'],
     ['pedro', 'mueble-libre'],
@@ -140,16 +263,56 @@ const GRAPH_EDGES = [
     ['pedro', 'cloud-devops'],
     ['pedro', 'frontend'],
     ['pedro', 'data-integration'],
-    ['secretaria', 'ai-engineering'],
-    ['secretaria', 'backend'],
-    ['secretaria', 'frontend'],
+    ['pedro', 'educacion'],
+    ['pedro', 'contacto'],
+    ['educacion', 'ai-engineering'],
+
+    // Skill clusters broken down into specific technologies
+    ['backend', 'python'],
+    ['backend', 'fastapi-flask'],
+    ['backend', 'orm-validation'],
+    ['backend', 'auth'],
+    ['frontend', 'ts-js'],
+    ['frontend', 'nextjs-react'],
+    ['frontend', 'tailwind'],
+    ['ai-engineering', 'llm-apps'],
+    ['ai-engineering', 'rag'],
+
+    // Projects/experience to the specific tech they actually use
+    ['secretaria', 'python'],
+    ['secretaria', 'fastapi-flask'],
+    ['secretaria', 'orm-validation'],
+    ['secretaria', 'ts-js'],
+    ['secretaria', 'nextjs-react'],
+    ['secretaria', 'tailwind'],
+    ['secretaria', 'llm-apps'],
+    ['secretaria', 'rag'],
     ['secretaria', 'data-integration'],
-    ['edisolutions', 'backend'],
+
+    ['edisolutions', 'python'],
+    ['edisolutions', 'fastapi-flask'],
+    ['edisolutions', 'auth'],
     ['edisolutions', 'cloud-devops'],
     ['edisolutions', 'data-integration'],
-    ['mueble-libre', 'frontend'],
+
+    ['mueble-libre', 'ts-js'],
+    ['mueble-libre', 'nextjs-react'],
     ['mueble-libre', 'data-integration']
 ];
+
+// Which cluster node each tech ("tier-2") node belongs to, for layout only
+// (seeding the force simulation and positioning the mobile static graph).
+const TECH_PARENT = {
+    'python': 'backend',
+    'fastapi-flask': 'backend',
+    'orm-validation': 'backend',
+    'auth': 'backend',
+    'ts-js': 'frontend',
+    'nextjs-react': 'frontend',
+    'tailwind': 'frontend',
+    'llm-apps': 'ai-engineering',
+    'rag': 'ai-engineering'
+};
 
 // ---------------------------------------------------------------------------
 // Shared content renderers — consumed by both graph.js (detail panel) and
@@ -223,12 +386,47 @@ function renderSkillContent(node) {
     `;
 }
 
+function renderEducationContent(node) {
+    const d = node.detail;
+    return `
+        <h3>${escapeHtml(d.title)}</h3>
+        <p class="detail-role">${escapeHtml(d.degree)}</p>
+        <p class="detail-paragraph">${escapeHtml(d.institution)} <span class="dot">·</span> ${escapeHtml(d.period)}</p>
+        <p class="detail-paragraph">${escapeHtml(d.note)}</p>
+        <div class="detail-facts">
+            ${d.languages.map(l => `
+                <div class="fact">
+                    <span class="fact-label">${escapeHtml(l.lang)}</span>
+                    <span class="fact-value">${escapeHtml(l.level)}</span>
+                </div>
+            `).join('')}
+        </div>
+    `;
+}
+
+function renderContactContent(node) {
+    const d = node.detail;
+    return `
+        <h3>${escapeHtml(d.title)}</h3>
+        <p class="detail-paragraph">${escapeHtml(d.intro)}</p>
+        <div class="detail-contact-links">
+            ${d.channels.map(c => `
+                <a href="${c.href}" class="contact-link" ${c.href.startsWith('http') ? 'target="_blank" rel="noopener"' : ''}>
+                    <i class="${c.icon}"></i><span>${escapeHtml(c.label)}</span>
+                </a>
+            `).join('')}
+        </div>
+    `;
+}
+
 function renderNodeDetail(node) {
     switch (node.detail.kind) {
         case 'about': return renderAboutContent(node);
         case 'experience': return renderExperienceContent(node);
         case 'project': return renderProjectContent(node);
         case 'skill': return renderSkillContent(node);
+        case 'education': return renderEducationContent(node);
+        case 'contact': return renderContactContent(node);
         default: return '';
     }
 }
