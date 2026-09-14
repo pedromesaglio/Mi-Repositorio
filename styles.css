@@ -509,6 +509,7 @@ section {
 .about-content {
     max-width: 720px;
     margin: 0 auto;
+    text-align: center;
 }
 
 .about .section-title {
