@@ -47,13 +47,15 @@ function setMode(mode) {
         graphView.hidden = false;
         listView.hidden = true;
         listNav.hidden = true;
-        toggleBtn.textContent = 'Ver como lista';
+        toggleBtn.innerHTML = '<i class="fas fa-list"></i> <span>Ver como lista</span>';
+        toggleBtn.classList.remove('is-cta');
         renderGraph();
     } else {
         graphView.hidden = true;
         listView.hidden = false;
         listNav.hidden = false;
-        toggleBtn.textContent = 'Ver grafo';
+        toggleBtn.innerHTML = '<i class="fas fa-diagram-project"></i> <span>Ver grafo</span>';
+        toggleBtn.classList.add('is-cta');
         teardownGraph();
     }
 }
@@ -108,6 +110,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initPanel();
     initListNav();
 
-    const initialMode = window.innerWidth >= GRAPH_BREAKPOINT ? 'graph' : 'list';
-    setMode(initialMode);
+    setMode('list');
 });

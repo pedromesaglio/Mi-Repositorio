@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body data-mode="graph">
+<body data-mode="list">
     <div class="bg-wash" aria-hidden="true"></div>
     <canvas id="bg-particles" aria-hidden="true"></canvas>
 
@@ -21,7 +21,7 @@
         <div class="container header-inner">
             <a href="#" class="nav-brand" onclick="return false;">Pedro<span>.</span>Mesaglio</a>
 
-            <nav id="list-nav" class="list-nav" hidden>
+            <nav id="list-nav" class="list-nav">
                 <a href="#about" class="list-nav-link">Sobre mí</a>
                 <a href="#experience" class="list-nav-link">Experiencia</a>
                 <a href="#projects" class="list-nav-link">Proyectos</a>
@@ -31,7 +31,9 @@
             </nav>
 
             <div class="header-actions">
-                <button id="mode-toggle" class="mode-toggle-btn" type="button">Ver como lista</button>
+                <button id="mode-toggle" class="mode-toggle-btn is-cta" type="button">
+                    <i class="fas fa-diagram-project"></i> <span>Ver grafo</span>
+                </button>
                 <a href="assets/CV_Pedro_Mesaglio.pdf" download class="nav-cv-btn">
                     <i class="fas fa-arrow-down"></i><span class="cv-btn-label">Descargar CV</span>
                 </a>
@@ -45,13 +47,13 @@
     </header>
 
     <!-- Graph View -->
-    <section id="graph-view" class="graph-view">
+    <section id="graph-view" class="graph-view" hidden>
         <p class="graph-hint">$ explorá el grafo — arrastrá los nodos, pasá el mouse para ver conexiones, hacé click para ver el detalle</p>
         <div id="graph-canvas" class="graph-canvas"></div>
     </section>
 
     <!-- List View (built from data.js) -->
-    <main id="list-view" hidden></main>
+    <main id="list-view"></main>
 
     <!-- Detail Panel -->
     <div id="detail-backdrop" class="detail-backdrop"></div>
