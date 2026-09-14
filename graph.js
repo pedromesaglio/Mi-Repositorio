@@ -108,7 +108,7 @@ function renderInteractiveGraph() {
     svg.setAttribute('width', width);
     svg.setAttribute('height', height);
 
-    const nodes = GRAPH_NODES.map(n => ({ ...n }));
+    const nodes = getNodes().map(n => ({ ...n }));
     const links = GRAPH_EDGES.map(([source, target]) => ({ source, target }));
     const byId = new Map(nodes.map(n => [n.id, n]));
 
@@ -222,7 +222,7 @@ function renderStaticGraph() {
     const cy = height / 2;
     const radius = Math.min(width, height) * 0.36;
 
-    const hubNodes = GRAPH_NODES.filter(n => n.id !== 'pedro' && n.type !== 'tech');
+    const hubNodes = getNodes().filter(n => n.id !== 'pedro' && n.type !== 'tech');
     const hubIds = new Set(hubNodes.map(n => n.id));
     const positions = { pedro: { x: cx, y: cy } };
 
@@ -245,7 +245,7 @@ function renderStaticGraph() {
         svg.appendChild(line);
     });
 
-    GRAPH_NODES.filter(n => n.id === 'pedro' || hubIds.has(n.id)).forEach(node => {
+    getNodes().filter(n => n.id === 'pedro' || hubIds.has(n.id)).forEach(node => {
         const btn = createNodeButton(node);
         const pos = positions[node.id];
         btn.style.transform = `translate(-50%, -50%) translate(${pos.x}px, ${pos.y}px)`;

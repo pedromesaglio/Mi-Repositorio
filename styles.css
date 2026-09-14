@@ -184,6 +184,25 @@ body[data-mode="graph"] {
     }
 }
 
+.lang-toggle-btn {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.5rem 0.65rem;
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease;
+    flex-shrink: 0;
+}
+
+.lang-toggle-btn:hover {
+    border-color: var(--border-hover);
+    color: var(--accent);
+}
+
 .nav-cv-btn {
     font-family: var(--font-mono);
     font-size: 0.82rem;

@@ -6,7 +6,7 @@
 let lastFocusedNode = null;
 
 function openDetailPanel(nodeId) {
-    const node = GRAPH_NODES.find(n => n.id === nodeId);
+    const node = getNodes().find(n => n.id === nodeId);
     if (!node) return;
 
     lastFocusedNode = document.activeElement;
@@ -47,17 +47,46 @@ function setMode(mode) {
         graphView.hidden = false;
         listView.hidden = true;
         listNav.hidden = true;
-        toggleBtn.innerHTML = '<i class="fas fa-list"></i> <span>Ver como lista</span>';
+        toggleBtn.innerHTML = `<i class="fas fa-list"></i> <span>${t('modeToList')}</span>`;
         toggleBtn.classList.remove('is-cta');
         renderGraph();
     } else {
         graphView.hidden = true;
         listView.hidden = false;
         listNav.hidden = false;
-        toggleBtn.innerHTML = '<i class="fas fa-diagram-project"></i> <span>Ver grafo</span>';
+        toggleBtn.innerHTML = `<i class="fas fa-diagram-project"></i> <span>${t('modeToGraph')}</span>`;
         toggleBtn.classList.add('is-cta');
         teardownGraph();
     }
+}
+
+function applyTranslations() {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        el.textContent = t(el.dataset.i18n);
+    });
+    document.getElementById('lang-toggle').textContent = t('langSwitchTo');
+    document.documentElement.lang = CURRENT_LANG;
+}
+
+function setLang(lang) {
+    if (lang === CURRENT_LANG) return;
+    CURRENT_LANG = lang;
+    try {
+        localStorage.setItem('lang', lang);
+    } catch (e) {
+        // localStorage unavailable (private mode, etc.) — language just won't persist
+    }
+
+    closeDetailPanel();
+    applyTranslations();
+    buildListView();
+    setMode(document.body.dataset.mode);
+}
+
+function initLangToggle() {
+    document.getElementById('lang-toggle').addEventListener('click', () => {
+        setLang(CURRENT_LANG === 'en' ? 'es' : 'en');
+    });
 }
 
 function initModeToggle() {
@@ -105,8 +134,17 @@ function initListNav() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    try {
+        const savedLang = localStorage.getItem('lang');
+        if (savedLang === 'en' || savedLang === 'es') CURRENT_LANG = savedLang;
+    } catch (e) {
+        // localStorage unavailable — default language stands
+    }
+
+    applyTranslations();
     buildListView();
     initModeToggle();
+    initLangToggle();
     initPanel();
     initListNav();
 

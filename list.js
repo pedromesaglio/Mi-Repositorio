@@ -5,17 +5,18 @@
 
 function buildListView() {
     const root = document.getElementById('list-view');
-    const pedro = GRAPH_NODES.find(n => n.id === 'pedro');
-    const edisolutions = GRAPH_NODES.find(n => n.id === 'edisolutions');
-    const educacion = GRAPH_NODES.find(n => n.id === 'educacion');
-    const contacto = GRAPH_NODES.find(n => n.id === 'contacto');
-    const projects = GRAPH_NODES.filter(n => n.type === 'project');
-    const skills = GRAPH_NODES.filter(n => n.type === 'skill');
+    const nodes = getNodes();
+    const pedro = nodes.find(n => n.id === 'pedro');
+    const edisolutions = nodes.find(n => n.id === 'edisolutions');
+    const educacion = nodes.find(n => n.id === 'educacion');
+    const contacto = nodes.find(n => n.id === 'contacto');
+    const projects = nodes.filter(n => n.type === 'project');
+    const skills = nodes.filter(n => n.type === 'skill');
 
     root.innerHTML = `
         <section id="about" class="about">
             <div class="container">
-                <h2 class="section-title"><span class="section-number">01</span> Sobre mí</h2>
+                <h2 class="section-title"><span class="section-number">01</span> ${t('navAbout')}</h2>
                 <div class="about-content fade-in">
                     <p class="about-meta"><i class="fas fa-location-dot"></i> ${escapeHtml(pedro.detail.location)}</p>
                     <div class="about-text">
@@ -27,7 +28,7 @@ function buildListView() {
 
         <section id="experience" class="experience">
             <div class="container">
-                <h2 class="section-title"><span class="section-number">02</span> Experiencia</h2>
+                <h2 class="section-title"><span class="section-number">02</span> ${t('navExperience')}</h2>
                 <div class="experience-card fade-in">
                     ${renderExperienceContent(edisolutions)}
                 </div>
@@ -36,7 +37,7 @@ function buildListView() {
 
         <section id="projects" class="projects">
             <div class="container">
-                <h2 class="section-title"><span class="section-number">03</span> Proyectos</h2>
+                <h2 class="section-title"><span class="section-number">03</span> ${t('navProjects')}</h2>
                 ${projects.map(p => `
                     <div class="project-card fade-in ${p.featured ? 'project-card--featured' : ''}">
                         ${renderProjectContent(p)}
@@ -47,7 +48,7 @@ function buildListView() {
 
         <section id="skills" class="skills">
             <div class="container">
-                <h2 class="section-title"><span class="section-number">04</span> Skills</h2>
+                <h2 class="section-title"><span class="section-number">04</span> ${t('navSkills')}</h2>
                 <div class="skills-grid">
                     ${skills.map((s, i) => `
                         <div class="skill-card fade-in">
@@ -62,7 +63,7 @@ function buildListView() {
 
         <section id="education" class="about">
             <div class="container">
-                <h2 class="section-title"><span class="section-number">05</span> Educación</h2>
+                <h2 class="section-title"><span class="section-number">05</span> ${t('navEducation')}</h2>
                 <div class="about-grid">
                     <div class="about-text fade-in">
                         <h3>${escapeHtml(educacion.detail.degree)}</h3>
@@ -83,7 +84,7 @@ function buildListView() {
 
         <section id="contact" class="contact">
             <div class="container">
-                <h2 class="section-title"><span class="section-number">06</span> Contacto</h2>
+                <h2 class="section-title"><span class="section-number">06</span> ${t('navContact')}</h2>
                 <p class="contact-text">${escapeHtml(contacto.detail.intro)}</p>
                 <div class="contact-links">
                     ${contacto.detail.channels.map(c => `
