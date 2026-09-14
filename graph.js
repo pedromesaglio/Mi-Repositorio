@@ -110,9 +110,21 @@ function renderInteractiveGraph() {
     const nodes = GRAPH_NODES.map(n => ({ ...n }));
     const links = GRAPH_EDGES.map(([source, target]) => ({ source, target }));
 
+    const cx = width / 2;
+    const cy = height / 2;
+    const seedRadius = Math.min(width, height) * 0.32;
+    const others = nodes.filter(n => n.id !== 'pedro');
+    others.forEach((node, i) => {
+        const angle = (i / others.length) * Math.PI * 2 - Math.PI / 2;
+        node.x = cx + seedRadius * Math.cos(angle);
+        node.y = cy + seedRadius * Math.sin(angle);
+    });
+
     const core = nodes.find(n => n.id === 'pedro');
-    core.fx = width / 2;
-    core.fy = height / 2;
+    core.x = cx;
+    core.y = cy;
+    core.fx = cx;
+    core.fy = cy;
 
     const lineEls = new Map();
     links.forEach((link, i) => {
