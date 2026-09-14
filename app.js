@@ -48,7 +48,6 @@ function setMode(mode) {
         listView.hidden = true;
         listNav.hidden = true;
         toggleBtn.innerHTML = `<i class="fas fa-list"></i> <span>${t('modeToList')}</span>`;
-        toggleBtn.classList.remove('is-cta');
         renderGraph();
     } else {
         graphView.hidden = true;
