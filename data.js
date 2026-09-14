@@ -118,7 +118,14 @@ const GRAPH_NODES = [
         detail: {
             kind: 'skill',
             title: 'AI Engineering',
-            text: 'LangGraph, OpenAI, Anthropic, LLM apps, prompting, RAG, retrieval, vector search (FAISS), integraciones MCP, evaluación de modelos, diseño de chatbots'
+            text: 'De prompting a producción: modelos integrados con reglas de negocio deterministas alrededor, no adentro del LLM.',
+            bullets: [
+                'LangGraph como runtime conversacional: combina interpretación por LLM con herramientas determinísticas.',
+                'Integración de Anthropic y OpenAI con ruteo de modelos, evaluación y benchmarking.',
+                'RAG con búsqueda vectorial (FAISS) para workflows de retrieval-first help/knowledge.',
+                'Integraciones MCP, automatización de workflows y diseño de chatbots multi-canal.'
+            ],
+            tags: ['LangGraph', 'Anthropic', 'OpenAI', 'RAG', 'FAISS', 'MCP', 'Prompting', 'Chatbot design']
         }
     },
     {
@@ -128,7 +135,15 @@ const GRAPH_NODES = [
         detail: {
             kind: 'skill',
             title: 'Backend',
-            text: 'Python, FastAPI, Flask, REST APIs, Pydantic, SQLAlchemy, JWT, RBAC, Alembic, pytest, Celery'
+            text: 'APIs REST en Python pensadas para producción multi-tenant: tipado de punta a punta, autenticación robusta y despliegues estables.',
+            bullets: [
+                'Arquitecturas async con FastAPI (SecretarIA) y APIs REST síncronas con Flask (Edisolutions).',
+                'Validación de datos con Pydantic y persistencia con SQLAlchemy sobre PostgreSQL/MySQL.',
+                'Autenticación JWT, control de acceso por roles (RBAC) y aislamiento de datos por tenant en producción.',
+                'Migraciones de esquema versionadas con Alembic; testing de integración con pytest.',
+                'Procesamiento asíncrono en background y colas de trabajo con Celery.'
+            ],
+            tags: ['Python', 'FastAPI', 'Flask', 'Pydantic', 'SQLAlchemy', 'JWT / RBAC', 'Alembic', 'pytest', 'Celery', 'REST APIs']
         }
     },
     {
@@ -138,7 +153,14 @@ const GRAPH_NODES = [
         detail: {
             kind: 'skill',
             title: 'Cloud & DevOps',
-            text: 'AWS EC2, AWS S3, Docker, Redis, Nginx, SSL/HTTPS, Linux, dominios custom, workers asíncronos'
+            text: 'Infraestructura productiva de punta a punta — no solo el deploy, sino la operación diaria de servidores en producción.',
+            bullets: [
+                'AWS EC2 + Nginx + SSL/HTTPS con dominios custom, en producción en Edisolutions.',
+                'AWS S3 y un proxy seguro de archivos para contenido privado (resúmenes en PDF).',
+                'Docker para empaquetar y desplegar SecretarIA; Redis para cache y colas de mensajes.',
+                'Workers asíncronos en background para tareas que no deben bloquear la request.'
+            ],
+            tags: ['AWS EC2', 'AWS S3', 'Docker', 'Redis', 'Nginx', 'SSL/HTTPS', 'Linux', 'Dominios custom']
         }
     },
     {
@@ -148,7 +170,15 @@ const GRAPH_NODES = [
         detail: {
             kind: 'skill',
             title: 'Frontend',
-            text: 'TypeScript, JavaScript, Next.js, React, TanStack Query, Tailwind CSS, HTML, CSS, PWA'
+            text: 'Interfaces React tipadas de punta a punta, con foco en estado de servidor y una UI consistente.',
+            bullets: [
+                'Next.js / React como base del frontend en SecretarIA y Mueble Libre.',
+                'TanStack Query para cache y sincronización de estado de servidor, con updates en tiempo real vía SSE.',
+                'Tailwind CSS como sistema de estilos utilitario, consistente en todo el dashboard.',
+                'TypeScript en todo el frontend, del componente a la llamada a la API.',
+                'PWA y HTML/CSS semántico como base de performance y accesibilidad.'
+            ],
+            tags: ['TypeScript', 'JavaScript', 'Next.js', 'React', 'TanStack Query', 'Tailwind CSS', 'PWA']
         }
     },
     {
@@ -158,7 +188,14 @@ const GRAPH_NODES = [
         detail: {
             kind: 'skill',
             title: 'Data & Integration',
-            text: 'PostgreSQL, MySQL, SQLite, Server-Sent Events, Google OAuth, Google Calendar/Meet, WhatsApp Cloud API, Telegram, Git/GitHub'
+            text: 'La persistencia relacional y las integraciones externas que conectan el producto con el mundo real.',
+            bullets: [
+                'PostgreSQL como base principal; MySQL y SQLite según el proyecto.',
+                'Server-Sent Events para actualizaciones en tiempo real sin polling.',
+                'Google OAuth, Calendar y Meet integrados en el flujo de reservas de SecretarIA.',
+                'WhatsApp Cloud API y Telegram como canales de atención multi-tenant.'
+            ],
+            tags: ['PostgreSQL', 'MySQL', 'SQLite', 'SSE', 'Google OAuth', 'WhatsApp Cloud API', 'Telegram', 'Git/GitHub']
         }
     },
     {
@@ -168,7 +205,13 @@ const GRAPH_NODES = [
         detail: {
             kind: 'skill',
             title: 'Python',
-            text: 'Lenguaje principal del backend — Flask en Edisolutions y FastAPI en SecretarIA, con pytest para testing de integración.'
+            text: 'Lenguaje principal del backend en los dos proyectos productivos del portfolio.',
+            bullets: [
+                'Flask en Edisolutions: APIs REST con JWT/RBAC, en producción multi-tenant desde 2024.',
+                'FastAPI en SecretarIA: arquitectura async con Pydantic y SQLAlchemy.',
+                'pytest para cobertura de integración en los endpoints críticos.'
+            ],
+            tags: ['FastAPI', 'Flask', 'Pydantic', 'pytest', 'asyncio']
         }
     },
     {
@@ -178,7 +221,12 @@ const GRAPH_NODES = [
         detail: {
             kind: 'skill',
             title: 'FastAPI & Flask',
-            text: 'FastAPI como base async de SecretarIA (Pydantic, SQLAlchemy); Flask en las APIs REST de Edisolutions con JWT/RBAC.'
+            text: 'Los dos frameworks que sostienen el backend de cada proyecto, elegidos según el caso de uso.',
+            bullets: [
+                'FastAPI en SecretarIA: tipado con Pydantic y async nativo, base del runtime conversacional con LangGraph.',
+                'Flask en Edisolutions: APIs REST livianas con JWT/RBAC y aislamiento por tenant, en producción.'
+            ],
+            tags: ['FastAPI', 'Flask', 'Pydantic', 'JWT / RBAC']
         }
     },
     {
@@ -188,7 +236,13 @@ const GRAPH_NODES = [
         detail: {
             kind: 'skill',
             title: 'SQLAlchemy & Pydantic',
-            text: 'ORM y validación de datos tipados sobre PostgreSQL; migraciones de esquema versionadas con Alembic.'
+            text: 'Capa de datos tipada de punta a punta: validación en el borde, persistencia relacional en el centro.',
+            bullets: [
+                'Pydantic valida y serializa cada request/response de la API.',
+                'SQLAlchemy como ORM sobre PostgreSQL, con relaciones y queries para el modelo multi-tenant.',
+                'Alembic versiona cada cambio de esquema con migraciones reproducibles.'
+            ],
+            tags: ['SQLAlchemy', 'Pydantic', 'Alembic', 'PostgreSQL']
         }
     },
     {
@@ -198,7 +252,13 @@ const GRAPH_NODES = [
         detail: {
             kind: 'skill',
             title: 'JWT & RBAC',
-            text: 'Autenticación por tokens y control de acceso por roles con aislamiento de datos por tenant, en producción en Edisolutions.'
+            text: 'Autenticación y autorización pensadas para SaaS multi-tenant: cada usuario ve solo lo suyo.',
+            bullets: [
+                'Tokens JWT para sesiones sin estado en el backend.',
+                'Control de acceso por roles (RBAC) para diferenciar permisos de admin, staff y usuario final.',
+                'Aislamiento de datos por tenant a nivel de query, en producción en Edisolutions.'
+            ],
+            tags: ['JWT', 'RBAC', 'Multi-tenant', 'Auth']
         }
     },
     {
@@ -208,7 +268,12 @@ const GRAPH_NODES = [
         detail: {
             kind: 'skill',
             title: 'TypeScript & JavaScript',
-            text: 'Tipado end-to-end en el frontend de SecretarIA y Mueble Libre, del componente a la llamada a la API.'
+            text: 'Tipado end-to-end del frontend: menos bugs en runtime, refactors más seguros.',
+            bullets: [
+                'Tipos compartidos entre componentes y llamadas a la API en SecretarIA.',
+                'Misma base de TypeScript/JavaScript en el marketplace Mueble Libre.'
+            ],
+            tags: ['TypeScript', 'JavaScript', 'Next.js']
         }
     },
     {
@@ -218,7 +283,13 @@ const GRAPH_NODES = [
         detail: {
             kind: 'skill',
             title: 'Next.js & React',
-            text: 'Frontend de SecretarIA y Mueble Libre, con TanStack Query para estado de servidor y actualizaciones en tiempo real vía SSE.'
+            text: 'Framework y librería principal del frontend en los dos proyectos personales.',
+            bullets: [
+                'Next.js con Server/Client Components como base de SecretarIA.',
+                'TanStack Query para estado de servidor y actualizaciones en tiempo real vía SSE.',
+                'Mueble Libre: listados, autenticación y flujos de usuario completos en React.'
+            ],
+            tags: ['Next.js', 'React', 'TanStack Query', 'SSE']
         }
     },
     {
@@ -228,7 +299,12 @@ const GRAPH_NODES = [
         detail: {
             kind: 'skill',
             title: 'Tailwind CSS',
-            text: 'Sistema de estilos utilitario del dashboard de SecretarIA — diseño consistente sin CSS a medida por componente.'
+            text: 'Sistema de estilos utilitario del dashboard de SecretarIA.',
+            bullets: [
+                'Diseño consistente sin CSS a medida por componente.',
+                'Theming e iteración rápida de UI sobre un design system propio.'
+            ],
+            tags: ['Tailwind CSS', 'Design system']
         }
     },
     {
@@ -238,7 +314,13 @@ const GRAPH_NODES = [
         detail: {
             kind: 'skill',
             title: 'LLM Apps',
-            text: 'Integración de Anthropic y OpenAI con ruteo de modelos, evaluación y benchmarking; prompting y diseño de chatbots, con autorización y reglas de negocio fuera del límite del LLM.'
+            text: 'Integración de modelos de lenguaje en producción, no solo en prototipos.',
+            bullets: [
+                'Anthropic y OpenAI con ruteo de modelos según el caso de uso.',
+                'Evaluación y benchmarking de respuestas antes de producción.',
+                'Autorización, reglas de negocio y transiciones de estado se mantienen fuera del límite del LLM.'
+            ],
+            tags: ['Anthropic', 'OpenAI', 'Model routing', 'Evaluación', 'Prompting']
         }
     },
     {
@@ -248,7 +330,13 @@ const GRAPH_NODES = [
         detail: {
             kind: 'skill',
             title: 'RAG (Retrieval-Augmented Generation)',
-            text: 'Búsqueda vectorial (FAISS) y workflows de retrieval-first help/knowledge, con embeddings e indexing asíncronos en SecretarIA.'
+            text: 'Retrieval-Augmented Generation aplicado a ayuda y conocimiento operativo.',
+            bullets: [
+                'Búsqueda vectorial con FAISS sobre contenido indexado.',
+                'Workflows de retrieval-first help/knowledge en SecretarIA.',
+                'Embeddings e indexing asíncronos, sin bloquear el flujo conversacional.'
+            ],
+            tags: ['FAISS', 'Vector search', 'Embeddings', 'Retrieval']
         }
     }
 ];
@@ -383,6 +471,12 @@ function renderSkillContent(node) {
     return `
         <h3>${escapeHtml(d.title)}</h3>
         <p class="detail-paragraph">${escapeHtml(d.text)}</p>
+        ${d.bullets && d.bullets.length ? `
+            <ul class="project-list">
+                ${d.bullets.map(b => `<li>${escapeHtml(b)}</li>`).join('')}
+            </ul>
+        ` : ''}
+        ${renderTags(d.tags)}
     `;
 }
 
