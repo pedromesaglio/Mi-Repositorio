@@ -461,6 +461,11 @@ section {
 
 .about-content {
     max-width: 720px;
+    margin: 0 auto;
+}
+
+.about .section-title {
+    justify-content: center;
 }
 
 .about-meta,
